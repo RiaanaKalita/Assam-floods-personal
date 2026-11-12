@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -8,26 +8,30 @@
 <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
-html,body{margin:0;background:#E4F4F4;color:#183D68;font-family:'Varela Round',sans-serif}
+html,body{margin:0;width:100%;min-height:100%;background:#E4F4F4;color:#183D68;font-family:'Varela Round',sans-serif;overflow-x:hidden}
 nav{width:100%;min-height:78px;background:#264F8E;display:flex;align-items:center;padding:10px 20px;gap:15px}
 nav img{width:75px;height:65px;object-fit:contain;flex-shrink:0}
 .brand{font-size:26px;font-weight:bold;color:white;white-space:nowrap}
 .links{display:flex;align-items:center;justify-content:space-evenly;flex:1;gap:5px}
 .links a{color:white;text-decoration:none;font-size:16px;font-weight:bold;padding:12px 24px;border-radius:9px;white-space:nowrap}
 .links a:hover,.links .active{background:#A9DDF5;color:#264F8E}
+
 .banner{height:300px;background:linear-gradient(90deg,#183D68B8,#183D6830),url("https://civicdatalab.in/2022-Assam-Flood-Response/Assam_floods.JPG") center/cover;display:flex;align-items:center;padding:35px 6%}
 .banner h1{color:white;font-size:clamp(30px,5vw,52px);margin:0}
+
 .upper{display:grid;grid-template-columns:.85fr 1.5fr;gap:22px;padding:25px 4%}
-.panel{background:#D4EBF0;border-radius:16px;padding:20px;box-shadow:0 3px 10px #183D6820}
+.panel{background:#D4EBF0;border-radius:16px;padding:20px;box-shadow:0 3px 10px #183D6820;min-width:0}
 h2{text-align:center;margin:0 0 15px}
 .contacts{max-height:400px;overflow-y:auto}
 .contact{background:white;padding:12px;border-radius:9px;margin:9px 0;display:flex;justify-content:space-between;gap:8px}
 a{color:#264F8E}
-.contact a{font-weight:bold;text-decoration:none}
-iframe{width:100%;border:0;border-radius:10px}
+.contact a{font-weight:bold;text-decoration:none;white-space:nowrap}
+iframe{width:100%;border:0;border-radius:10px;display:block}
 .hospital iframe{height:350px}
 .note{font-size:13px;line-height:1.5}
-  
+
+.hospital form input{max-width:100%}
+
 .lower{
 display:grid;
 grid-template-columns:1fr 1.2fr 1.3fr;
@@ -35,19 +39,88 @@ gap:20px;
 padding:25px 3%;
 align-items:start;
 }
+.lower>div{min-width:0}
 .lower h2{text-align:center;font-size:28px;margin:0 0 12px;color:#183D68}
 .advice h2{text-align:left;margin:15px 0}
 .advice ul{line-height:1.8;padding-left:22px}
 .checklist{background:#E9988E;padding:12px 25px;border-radius:22px;margin-bottom:20px}
 .checklist label{display:block;padding:9px 0;border-bottom:2px solid #183D68}
 .checklist input{accent-color:#264F8E}
-.middle iframe{width:100%;aspect-ratio:16/9}.right .map{height:350px;background:white;border:6px solid white;border-radius:30px;}
-.right .map{height:260px;background:white;border:6px solid white;border-radius:30px;}
-.map-full{display:block;text-align:center;background:#264F8E;color:white;padding:11px;margin:10px 0 22px;border-radius:9px;text-decoration:none;font-weight:bold;}
+.middle iframe{width:100%;aspect-ratio:16/9}
+.right .map{height:260px;background:white;border:6px solid white;border-radius:30px}
+.map-full{display:block;text-align:center;background:#264F8E;color:white;padding:11px;margin:10px 0 22px;border-radius:9px;text-decoration:none;font-weight:bold}
 .map-full:hover{background:#A9DDF5;color:#264F8E}
 .news{background:#A4B894;border:6px solid white;border-radius:8px;padding:8px}
 .news iframe{height:190px}
-@media(max-width:850px){.lower{grid-template-columns:1fr}}
+
+/* TABLETS */
+@media(max-width:1000px){
+.upper{grid-template-columns:1fr 1.3fr;gap:15px;padding:20px}
+.lower{grid-template-columns:1fr 1fr;gap:18px;padding:20px}
+.advice{grid-column:1/-1}
+.right .map{height:280px}
+}
+
+/* MOBILE PHONES */
+@media(max-width:650px){
+nav{gap:5px;padding:8px 12px;flex-wrap:wrap;justify-content:center}
+nav img{width:55px;height:50px}
+.brand{font-size:21px}
+.links{flex-basis:100%;width:100%;justify-content:space-around;gap:4px;padding:5px 0}
+.links a{font-size:13px;padding:9px 13px}
+
+.banner{height:240px;padding:25px 6%;background-position:center}
+.banner h1{font-size:clamp(27px,7vw,40px)}
+
+.upper{grid-template-columns:1fr;gap:15px;padding:16px 12px}
+.panel{padding:16px}
+.panel h2{font-size:21px}
+.contacts{max-height:none;overflow:visible}
+.contact{padding:12px;font-size:14px}
+.contact span{min-width:0}
+.contact a{font-size:14px}
+.hospital iframe{height:300px}
+.hospital form input{font-size:14px}
+
+.lower{
+grid-template-columns:1fr;
+gap:22px;
+padding:20px 14px;
+}
+.advice{grid-column:auto}
+.lower h2{font-size:23px}
+.advice h2{font-size:22px}
+.advice ul{padding-left:22px;font-size:14px;line-height:1.8}
+
+.checklist{padding:12px 18px;border-radius:17px}
+.checklist label{padding:12px 0;font-size:14px}
+.checklist input{width:17px;height:17px;vertical-align:middle}
+
+.middle iframe{width:100%;aspect-ratio:16/9;height:auto}
+.right .map{width:100%;height:300px;border-radius:18px}
+.map-full{padding:13px}
+.news iframe{height:250px}
+}
+
+/* VERY SMALL PHONES */
+@media(max-width:380px){
+nav{padding:7px}
+nav img{width:45px;height:45px}
+.brand{font-size:19px}
+.links a{font-size:11px;padding:8px 9px}
+.banner{height:210px}
+.banner h1{font-size:27px}
+.upper{padding:12px 10px}
+.panel{padding:13px}
+.contact{font-size:12px;padding:10px;gap:5px}
+.contact a{font-size:13px}
+.hospital iframe{height:260px}
+.lower{padding:16px 10px}
+.lower h2{font-size:21px}
+.checklist{padding:10px 14px}
+.right .map{height:250px}
+.news iframe{height:220px}
+}
 </style>
 </head>
 <body>
@@ -76,31 +149,16 @@ align-items:start;
 <p class="note">Tap a number to call from a phone. Use emergency numbers only when help is needed.</p>
 </div>
 
-
 <div class="panel hospital">
 <h2>Hospital Locator</h2>
 <form action="https://www.google.com/maps/search/" method="get" target="_blank">
-<input
-type="text"
-name="api"
-value="1"
-hidden>
-<input
-type="text"
-name="query"
-placeholder="Search hospitals or enter a district..."
-required
-style="width:100%;padding:13px;border:1px solid #A9DDF5;border-radius:9px;font-family:inherit;margin-bottom:10px">
-<button type="submit"
-style="background:#264F8E;color:white;padding:11px 20px;border:0;border-radius:8px;font-family:inherit;font-weight:bold;cursor:pointer">
+<input type="text" name="api" value="1" hidden>
+<input type="text" name="query" placeholder="Search hospitals or enter a district..." required style="width:100%;padding:13px;border:1px solid #A9DDF5;border-radius:9px;font-family:inherit;margin-bottom:10px">
+<button type="submit" style="background:#264F8E;color:white;padding:11px 20px;border:0;border-radius:8px;font-family:inherit;font-weight:bold;cursor:pointer">
 Search Hospitals
 </button>
 </form>
-<iframe
-src="https://www.google.com/maps?q=hospitals&output=embed"
-title="Google Maps hospital search"
-loading="lazy">
-</iframe>
+<iframe src="https://www.google.com/maps?q=hospitals&output=embed" title="Google Maps hospital search" loading="lazy"></iframe>
 <p class="note">
 Search for hospitals by area or state using the search box above. Type as shown: State/specific area hospital for (any specific specialisation needed)
 </p>
@@ -133,11 +191,7 @@ Search for hospitals by area or state using the search box above. Type as shown:
 </div>
 <div class="right">
 <h2>Flood map</h2>
-<iframe class="map"
-src="https://assamfloodwatch.com/"
-title="Assam live flood map"
-loading="lazy">
-</iframe>
+<iframe class="map" src="https://assamfloodwatch.com/" title="Assam live flood map" loading="lazy"></iframe>
 <a class="map-full" href="https://assamfloodwatch.com/" target="_blank" rel="noopener">View Full Screen ↗</a>
 <h2>Latest News</h2>
 <div class="news">
