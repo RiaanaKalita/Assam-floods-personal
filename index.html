@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#E4F4F4;color:#183D68;font-family:'Varela Round',sans-serif}
+html{width:100%;overflow-x:hidden}
+body{margin:0;width:100%;background:#E4F4F4;color:#183D68;font-family:'Varela Round',sans-serif;overflow-x:hidden}
 nav{height:78px;background:#264F8E;display:flex;align-items:center;padding:0 20px;gap:15px}
 nav img{width:110px;height:94px;object-fit:contain;flex-shrink:0;transform:scale(1.1)}
 .brand{font-size:1.7rem;font-weight:bold;color:white;white-space:nowrap}
@@ -37,7 +39,47 @@ details[open] summary:after{content:"⌃"}
 details p{font-size:14px;line-height:1.5}
 .waves{height:80px;margin-top:25px;overflow:hidden}
 .waves svg{width:100%;height:100%;display:block}
-@media(max-width:850px){nav{height:auto;flex-wrap:wrap;padding:10px}nav img{width:75px}.brand{font-size:1.3rem}.links a{font-size:.9rem;padding:8px}.content{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* TABLETS */
+@media(max-width:1000px){
+.content{grid-template-columns:minmax(0,1fr) 170px;gap:14px}
+.cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card{min-height:220px}
+}
+
+/* MOBILE PHONES */
+@media(max-width:600px){
+nav{height:auto;min-height:75px;padding:8px 12px;gap:5px;flex-wrap:wrap;justify-content:center}
+nav img{width:65px;height:60px;transform:none}
+.brand{font-size:1.4rem}
+.links{flex-basis:100%;width:100%;justify-content:space-around;gap:4px;padding:5px 0}
+.links a{font-size:.9rem;padding:9px 13px}
+.banner{height:280px;background-position:center}
+.banner h1{top:35px;left:5%;font-size:clamp(1.6rem,6vw,2.2rem);max-width:90%}
+.banner .btn{top:175px;left:5%;padding:9px 17px;font-size:.9rem}
+.safe{font-size:12px;padding:10px 12px}
+main{padding:20px 14px 0}
+.content{grid-template-columns:1fr;gap:18px}
+.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.card{padding:15px 8px;min-height:215px}
+.card p{font-size:14px;min-height:58px}
+.card h3{font-size:.95rem}
+.card .btn{padding:9px 17px}
+.about{width:100%}
+.waves{height:55px;margin-top:20px}
+}
+
+/* VERY SMALL PHONES */
+@media(max-width:380px){
+.cards{grid-template-columns:1fr}
+.card{min-height:auto;padding:18px 12px}
+.card p{min-height:auto}
+.banner{height:250px}
+.banner h1{font-size:1.55rem;top:30px}
+.banner .btn{top:155px}
+.safe{font-size:10px;padding:9px}
+.links a{font-size:.82rem;padding:8px 10px}
+}
 </style>
 </head>
 <body>
