@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;background:#E4F4F4}
+html,body{margin:0;min-height:100%;background:#E4F4F4;width:100%;overflow-x:hidden}
 body{font-family:'Varela Round',sans-serif}
 nav{width:100%;min-height:78px;background:#264F8E;display:flex;align-items:center;padding:10px 20px;gap:15px}
 nav img{width:75px;height:65px;object-fit:contain;flex-shrink:0}
@@ -102,26 +102,126 @@ display:block;
 }
 .image-card p{font-weight:bold;margin:6px 0 2px}
 
-.graph{
-margin-top:20px;
-}
+.graph{margin-top:20px}
 .graph img{
 height:200px;
 object-fit:contain;
 background:white;
 }
 
+/* TABLETS */
 @media(max-width:950px){
-.info-layout{grid-template-columns:1fr 1fr}
+.info-layout{
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+.info-section{margin-right:0}
 }
 
+/* MOBILE PHONES */
 @media(max-width:600px){
-nav{gap:5px;padding:8px}
+nav{
+gap:5px;
+padding:8px 12px;
+flex-wrap:wrap;
+justify-content:center;
+}
+nav img{width:55px;height:50px}
+.brand{font-size:21px}
+.links{
+flex-basis:100%;
+width:100%;
+justify-content:space-around;
+gap:4px;
+padding:5px 0;
+}
+.links a{
+font-size:13px;
+padding:9px 13px;
+}
+
+.info-layout{
+grid-template-columns:minmax(0,1fr);
+gap:18px;
+padding:14px;
+}
+
+.quiz{
+width:100%;
+padding:17px;
+}
+.quiz h2{font-size:20px}
+.question{font-size:16px}
+.option{padding:13px 10px;font-size:14px}
+.quiz button{padding:12px 18px;font-size:14px}
+
+.section-two{
+margin-top:22px;
+}
+.section-two .research,
+.info-section .research{
+display:block;
+width:100%;
+padding:17px;
+font-size:14px;
+line-height:1.55;
+}
+
+.info-section{
+margin:10px 0 0;
+text-align:left;
+}
+.info-section h2,.section-two h2{
+font-size:19px;
+line-height:1.35;
+}
+
+.pie-area{margin-top:0}
+.pie-area img{
+height:auto;
+max-height:220px;
+max-width:100%;
+}
+
+.rescue-area{margin-top:12px}
+.rescue-area img{
+height:auto;
+max-height:210px;
+object-fit:cover;
+}
+.rescue-area p{font-size:14px}
+
+.lower-images{
+grid-template-columns:1fr;
+gap:12px;
+margin-top:14px;
+}
+.image-card{width:100%;padding:9px}
+.image-card img{height:auto;max-height:220px;object-fit:cover}
+.image-card p{font-size:14px}
+
+.graph{margin-top:16px}
+.graph img{
+width:100%;
+height:auto;
+max-height:220px;
+object-fit:contain;
+}
+}
+
+/* VERY SMALL PHONES */
+@media(max-width:380px){
+nav{padding:7px}
 nav img{width:45px;height:45px}
-.brand{font-size:18px}
-.links a{font-size:11px;padding:7px 4px}
-.info-layout{grid-template-columns:1fr}
-.lower-images{grid-template-columns:1fr}
+.brand{font-size:19px}
+.links a{font-size:11px;padding:8px 9px}
+.info-layout{padding:10px;gap:14px}
+.quiz{padding:14px}
+.quiz h2{font-size:18px}
+.section-two .research,.info-section .research{
+padding:14px;
+font-size:13px;
+}
 }
 </style>
 </head>
