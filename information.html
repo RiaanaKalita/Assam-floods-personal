@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TideTurn | Information</title>
+<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#E4F4F4}
+body{font-family:'Varela Round',sans-serif}
+nav{width:100%;min-height:78px;background:#264F8E;display:flex;align-items:center;padding:10px 20px;gap:15px}
+nav img{width:75px;height:65px;object-fit:contain;flex-shrink:0}
+.brand{font-size:26px;font-weight:bold;color:white;white-space:nowrap}
+.links{display:flex;align-items:center;justify-content:space-evenly;flex:1;gap:5px}
+.links a{color:white;text-decoration:none;font-size:16px;font-weight:bold;padding:12px 24px;border-radius:9px;white-space:nowrap}
+.links a:hover,.links .active{background:#A9DDF5;color:#264F8E}
+
+.info-layout{
+display:grid;
+grid-template-columns:380px minmax(220px,1fr) minmax(280px,1fr);
+gap:10px 20px;
+align-items:start;
+padding:20px;
+}
+
+.quiz{
+width:100%;
+padding:22px;
+background:#D4EBF0;
+color:#183D68;
+border-radius:14px;
+box-shadow:0 3px 10px #183D6820;
+}
+.quiz h2{margin:0 0 8px}
+.progress{font-size:13px;margin-bottom:18px}
+.question{font-size:17px;font-weight:bold;margin-bottom:16px}
+.option{display:block;background:white;padding:11px;margin:9px 0;border-radius:8px;cursor:pointer}
+.option:has(input:checked){background:#A9DDF5}
+.quiz button{background:#E9988E;color:#183D68;border:0;border-radius:8px;padding:10px 18px;font-weight:bold;cursor:pointer;margin-top:12px}
+.quiz button:disabled{opacity:.5;cursor:not-allowed}
+#result{font-weight:bold;line-height:1.6}
+
+.info-section{
+margin-top:10px;
+margin-right:20px;
+text-align:right;
+}
+.info-section h2{margin:0 0 10px}
+.info-section .research{
+display:inline-block;
+background:#E9988E;
+color:white;
+border-radius:15px;
+padding:20px;
+text-align:left;
+}
+
+.pie-area{text-align:center;margin-top:10px}
+.pie-area img{width:100%;height:220px;object-fit:contain}
+
+.rescue-area{text-align:center;margin-top:5px}
+.rescue-area img{width:100%;height:190px;object-fit:cover;border-radius:16px;display:block}
+.rescue-area p{font-weight:bold;margin:6px 0 0;color:#183D68}
+
+.section-two{
+margin-top:20px;
+text-align:left;
+}
+.section-two h2{margin:0 0 15px}
+.section-two .research{
+display:inline-block;
+background:#A4B894;
+color:white;
+border-radius:15px;
+padding:20px;
+}
+
+.lower-images{
+display:grid;
+grid-template-columns:1fr;
+gap:10px;
+align-items:start;
+margin-top:10px;
+}
+
+.image-card{
+background:white;
+padding:10px;
+border-radius:18px;
+text-align:center;
+box-shadow:0 3px 10px #183d6820;
+min-width:0;
+}
+.image-card img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:16px;
+display:block;
+}
+.image-card p{font-weight:bold;margin:6px 0 2px}
+
+.graph{
+margin-top:20px;
+}
+.graph img{
+height:200px;
+object-fit:contain;
+background:white;
+}
+
+@media(max-width:950px){
+.info-layout{grid-template-columns:1fr 1fr}
+}
+
+@media(max-width:600px){
+nav{gap:5px;padding:8px}
+nav img{width:45px;height:45px}
+.brand{font-size:18px}
+.links a{font-size:11px;padding:7px 4px}
+.info-layout{grid-template-columns:1fr}
+.lower-images{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<nav>
+<img src="Logo.png" alt="TideTurn logo">
+<span class="brand">TideTurn</span>
+<div class="links">
+<a href="index.html">Home</a>
+<a class="active" href="information.html">Information</a>
+<a href="safety.html">Safety</a>
+</div>
+</nav>
+<div class="info-layout">
+
+<div>
+<div class="quiz">
+<h2>🌊 Flood Awareness Quiz</h2>
+<p>Test your knowledge and stay prepared.</p>
+<div id="questionArea">
+<p class="progress" id="progress"></p>
+<p class="question" id="question"></p>
+<div id="options"></div>
+<p id="feedback" aria-live="polite"></p>
+<button id="next" type="button" disabled>Submit Answer</button>
+</div>
+<div id="resultArea" hidden>
+<h3>Quiz Completed!</h3>
+<p id="result" aria-live="polite"></p>
+<button type="button" onclick="restartQuiz()">Try Again</button>
+</div>
+</div>
+<div class="section-two">
+<h2>Impact of Floods</h2>
+<div class="research">Floods can displace families, destroy homes, damage agricultural land and interrupt access to schools, healthcare and clean drinking water. Their effects often continue long after the water recedes, as communities struggle to rebuild their homes and livelihoods. The scale of the impact was evident in 2024, when approximately 42.96 lakh people across 7,794 villages were affected by floods in Assam. Around 49,580 hectares of crop area were also affected, threatening agricultural livelihoods. The situation remained severe in 2026, when the flood-related death toll reached 105 people by 18 August, according to figures from the Assam State Disaster Management Authority (ASDMA). These statistics highlight the devastating human and economic consequences of flooding and the importance of rescue operations, emergency relief and long-term recovery support.</div>
+</div>
+</div>
+
+<div>
+<div class="pie-area">
+<img src="https://www.researchgate.net/publication/348577571/figure/fig5/AS:981574921224226@1611037106471/Year-wise-loss-of-property-Rs-in-Crore-in-Assam-due-to-flood-and-erosion-Source.png" alt="Value of Property pie chart">
+</div>
+<div class="rescue-area">
+<img src="https://ichef.bbci.co.uk/news/1536/cpsprodpb/14572/production/_125541338_floodassam.jpg.webp" alt="Rescue efforts during Assam floods">
+<p>Rescue Efforts</p>
+</div>
+<div class="lower-images">
+<div class="image-card">
+<img src="https://c.ndtvimg.com/2026-07/6r1mrotg_assam-floods_625x300_24_July_26.jpeg?im=FaceCrop,algorithm=dnn,width=773,height=435" alt="Floods in Assam">
+<p>Floods in Assam</p>
+</div>
+<div class="image-card">
+<img src="https://cf-images.assettype.com/downtoearth%2F2026-08-30%2Fz5syd2p3%2FAssam-Floods.jpg?w=1200&auto=format%2Ccompress&fit=max" alt="Destroyed property">
+<p>Destroyed Property</p>
+</div>
+</div>
+</div>
+
+<div>
+<div class="info-section">
+<h2>Why Does Assam Experience Heavy Flooding?</h2>
+<div class="research">Assam receives intense rainfall during the South-West Monsoon, particularly between May and September. According to the Assam Water Resources Department, approximately 85% of the Brahmaputra basin's annual rainfall occurs during these months, causing rivers and their tributaries to rise. The Brahmaputra and Barak river systems receive water from numerous tributaries, including rivers flowing down from the Himalayas. When heavy rainfall occurs across several river catchments at once, these tributaries can swell together, increasing water levels and the risk of flooding. In July 2024, the Brahmaputra at Neamatighat reached a new recorded highest flood level of 87.47 metres, exceeding its previous record of 87.37 metres from 1991. These factors make Assam particularly vulnerable to recurring floods during the monsoon season.</div>
+</div>
+<div class="graph image-card">
+<img src="https://www.researchgate.net/publication/348577571/figure/fig4/AS:981574921232411@1611037106410/Year-wise-family-affected-in-Assam-due-flood-and-Riverbank-erosion-Source-Water.png" alt="Year-wise families affected by floods and riverbank erosion in Assam">
+<p>Families Affected by Floods</p>
+</div>
+</div>
+
+</div>
+
+<script>
+const questions = [
+{
+q:"What should you do when a flood warning is issued?",
+options:["Ignore it","Follow official safety instructions","Go near the river"],
+answer:1
+},
+{
+q:"What should you do if floodwater blocks a road?",
+options:["Walk through it","Drive through it","Find a safer route"],
+answer:2
+},
+{
+q:"Which item belongs in an emergency kit?",
+options:["Drinking water","Glass decorations","Unnecessary toys"],
+answer:0
+},
+{
+q:"Where should you get reliable flood updates?",
+options:["Online rumours","Official weather and emergency alerts","Unverified messages"],
+answer:1
+},
+{
+q:"What should you do if authorities order an evacuation?",
+options:["Stay and watch","Wait for water to enter","Follow evacuation instructions promptly"],
+answer:2
+}
+];
+
+let current=0;
+let score=0;
+
+function showQuestion(){
+document.getElementById("progress").textContent=
+"QUESTION "+(current+1)+" OF "+questions.length;
+
+document.getElementById("question").textContent=
+questions[current].q;
+
+document.getElementById("options").innerHTML=
+questions[current].options.map((option,i)=>
+'<label class="option"><input type="radio" name="answer" value="'+i+'"> '+option+'</label>'
+).join("");
+
+document.getElementById("feedback").textContent="";
+document.getElementById("next").disabled=true;
+document.getElementById("next").textContent=
+current===questions.length-1?"View Results":"Submit Answer";
+
+document.querySelectorAll('input[name="answer"]').forEach(input=>{
+input.addEventListener("change",()=>{
+document.getElementById("next").disabled=false;
+});
+});
+}
+
+document.getElementById("next").addEventListener("click",function(){
+const selected=document.querySelector('input[name="answer"]:checked');
+if(!selected)return;
+
+if(Number(selected.value)===questions[current].answer){
+score++;
+}
+
+current++;
+if(current<questions.length){
+showQuestion();
+}else{
+document.getElementById("questionArea").hidden=true;
+document.getElementById("resultArea").hidden=false;
+document.getElementById("result").textContent=
+"You scored "+score+" out of "+questions.length+"!";
+}
+});
+
+function restartQuiz(){
+current=0;
+score=0;
+document.getElementById("questionArea").hidden=false;
+document.getElementById("resultArea").hidden=true;
+showQuestion();
+}
+
+showQuestion();
+</script>
+</body>
+</html>
