@@ -105,7 +105,7 @@ main{padding:20px 14px 0}
 <div class="language">
 <button class="lang-btn" onclick="toggleLang()" aria-label="Choose language" aria-expanded="false">🌐</button>
 <div class="lang-menu" id="langMenu" hidden>
-<button onclick="changeLang('en')">English ✓</button>
+<button onclick="changeLang('en')">English</button>
 <button onclick="changeLang('as')">অসমীয়া</button>
 </div>
 </div>
@@ -172,6 +172,8 @@ main{padding:20px 14px 0}
 </div>
 
 <script>
+let language=localStorage.getItem("tideturn-language")||"en";
+
 function toggleLang(){
 const menu=document.getElementById('langMenu');
 const button=document.querySelector('.lang-btn');
@@ -180,21 +182,29 @@ button.setAttribute('aria-expanded',!menu.hidden);
 }
 
 function changeLang(lang){
-document.querySelectorAll('[data-en]').forEach(element=>{
-element.innerHTML=element.getAttribute('data-'+lang);
+language=lang;
+localStorage.setItem("tideturn-language",lang);
+applyLanguage();
+}
+
+function applyLanguage(){
+document.querySelectorAll('[data-en][data-as]').forEach(element=>{
+element.innerHTML=element.getAttribute('data-'+language);
 });
 
-document.documentElement.lang=lang==='as'?'as':'en';
+document.documentElement.lang=language==='as'?'as':'en';
 
 document.querySelector('.lang-btn').setAttribute('aria-expanded','false');
 document.getElementById('langMenu').hidden=true;
 
 document.querySelectorAll('.lang-menu button').forEach((button,index)=>{
 button.textContent=index===0
-?(lang==='en'?'English ✓':'English')
-:(lang==='as'?'অসমীয়া ✓':'অসমীয়া');
+?(language==='en'?'English ✓':'English')
+:(language==='as'?'অসমীয়া ✓':'অসমীয়া');
 });
 }
+
+applyLanguage();
 </script>
 </body>
 </html>
