@@ -244,6 +244,21 @@ let current=0;
 let score=0;
 let language=localStorage.getItem("tideturn-language")||"en";
 
+const feedbackMessages={
+en:[
+"Don't give up! You'll do better next time! 🌱",
+"Nearly there! Keep learning! 💪",
+"Well done! You know your flood safety! 👏",
+"Excellent! You did an amazing job! 🌟"
+],
+as:[
+"হাৰ নামানিব! পৰৱৰ্তী সময়ত আৰু ভাল কৰিব পাৰিব! 🌱",
+"প্ৰায় সফল! শিকি গৈ থাকক! 💪",
+"বৰ ভাল! আপুনি বানপানীৰ সুৰক্ষাৰ বিষয়ে ভালদৰে জানে! 👏",
+"অতি সুন্দৰ! আপুনি বৰ ভাল কৰিলে! 🌟"
+]
+};
+
 function toggleLang(){
 const menu=document.getElementById("langMenu");
 const button=document.querySelector(".lang-btn");
@@ -280,6 +295,11 @@ showResult();
 }
 }
 
+function toggleNextButton(){
+const next=document.getElementById("next");
+next.disabled=!document.querySelector('input[name="answer"]:checked');
+}
+
 function showQuestion(){
 document.getElementById("progress").textContent=
 language==="as"
@@ -304,9 +324,7 @@ current===questions.length-1
 :(language==="as"?"উত্তৰ জমা দিয়ক":"Submit Answer");
 
 document.querySelectorAll('input[name="answer"]').forEach(input=>{
-input.addEventListener("change",()=>{
-document.getElementById("next").disabled=false;
-});
+input.addEventListener("change",toggleNextButton);
 });
 }
 
@@ -329,10 +347,17 @@ showResult();
 });
 
 function showResult(){
+let messageIndex;
+if(score===5)messageIndex=3;
+else if(score===4)messageIndex=2;
+else if(score===3)messageIndex=1;
+else messageIndex=0;
+
 document.getElementById("result").textContent=
-language==="as"
-?"আপুনি "+questions.length+" টাৰ ভিতৰত "+score+" টা শুদ্ধ উত্তৰ দিছে!"
-:"You scored "+score+" out of "+questions.length+"!";
+(language==="as"
+?"আপুনি ৫ টাৰ ভিতৰত "+score+" টা শুদ্ধ উত্তৰ দিছে! "
+:"You scored "+score+" out of 5! ")+
+feedbackMessages[language][messageIndex];
 }
 
 function restartQuiz(){
