@@ -16,6 +16,14 @@ nav img{width:75px;height:65px;object-fit:contain;flex-shrink:0}
 .links a{color:white;text-decoration:none;font-size:16px;font-weight:bold;padding:12px 24px;border-radius:9px;white-space:nowrap}
 .links a:hover,.links .active{background:#A9DDF5;color:#264F8E}
 
+/* LANGUAGE SELECTOR */
+.language{position:relative;margin-left:auto}
+.lang-btn{background:transparent;border:0;color:white;font-size:25px;cursor:pointer;padding:8px}
+.lang-menu{position:absolute;right:0;top:48px;background:white;border-radius:9px;box-shadow:0 3px 12px #183D6840;min-width:145px;z-index:10;overflow:hidden}
+.lang-menu button{display:block;width:100%;padding:12px;border:0;background:white;color:#183D68;font-family:inherit;font-size:15px;cursor:pointer;text-align:left}
+.lang-menu button:hover{background:#A9DDF5}
+[hidden]{display:none!important}
+
 .banner{height:300px;background:linear-gradient(90deg,#183D68B8,#183D6830),url("https://civicdatalab.in/2022-Assam-Flood-Response/Assam_floods.JPG") center/cover;display:flex;align-items:center;padding:35px 6%}
 .banner h1{color:white;font-size:clamp(30px,5vw,52px);margin:0}
 
@@ -66,7 +74,8 @@ align-items:start;
 nav{gap:5px;padding:8px 12px;flex-wrap:wrap;justify-content:center}
 nav img{width:55px;height:50px}
 .brand{font-size:21px}
-.links{flex-basis:100%;width:100%;justify-content:space-around;gap:4px;padding:5px 0}
+.language{order:3}
+.links{order:4;flex-basis:100%;width:100%;justify-content:space-around;gap:4px;padding:5px 0}
 .links a{font-size:13px;padding:9px 13px}
 
 .banner{height:240px;padding:25px 6%;background-position:center}
@@ -128,38 +137,50 @@ nav img{width:45px;height:45px}
 <img src="Logo.png" alt="TideTurn logo">
 <span class="brand">TideTurn</span>
 <div class="links">
-<a href="index.html">Home</a><a href="information.html">Information</a><a class="active" href="safety.html">Safety</a>
+<a href="index.html" data-en="Home" data-as="গৃহ">Home</a>
+<a href="information.html" data-en="Information" data-as="তথ্য">Information</a>
+<a class="active" href="safety.html" data-en="Safety" data-as="সুৰক্ষা">Safety</a>
+</div>
+<div class="language">
+<button class="lang-btn" onclick="toggleLang()" aria-label="Choose language" aria-expanded="false">🌐</button>
+<div class="lang-menu" id="langMenu" hidden>
+<button type="button" onclick="changeLang('en')">English</button>
+<button type="button" onclick="changeLang('as')">অসমীয়া</button>
+</div>
 </div>
 </nav>
-<section class="banner"><h1>Need Help?<br>You’re not alone!</h1></section>
+
+<section class="banner">
+<h1 data-en="Need Help?<br>You’re not alone!" data-as="সহায়ৰ প্ৰয়োজন?<br>আপুনি অকলশৰীয়া নহয়!">Need Help?<br>You’re not alone!</h1>
+</section>
 
 <section class="upper">
 <div class="panel">
-<h2>Emergency Numbers</h2>
+<h2 data-en="Emergency Numbers" data-as="জৰুৰীকালীন ফোন নম্বৰ">Emergency Numbers</h2>
 <div class="contacts">
-<div class="contact"><span>State Disaster Control Room</span><a href="tel:1070">1070</a></div>
-<div class="contact"><span>Disaster Management</span><a href="tel:1079">1079</a></div>
-<div class="contact"><span>District Control Room</span><a href="tel:1077">1077</a></div>
-<div class="contact"><span>Medical Emergency</span><a href="tel:108">108</a></div>
-<div class="contact"><span>National Emergency</span><a href="tel:112">112</a></div>
-<div class="contact"><span>Police</span><a href="tel:100">100</a></div>
-<div class="contact"><span>Women’s Helpline</span><a href="tel:181">181</a></div>
-<div class="contact"><span>Child Helpline</span><a href="tel:1098">1098</a></div>
+<div class="contact"><span data-en="State Disaster Control Room" data-as="ৰাজ্যিক দুৰ্যোগ নিয়ন্ত্ৰণ কক্ষ">State Disaster Control Room</span><a href="tel:1070">1070</a></div>
+<div class="contact"><span data-en="Disaster Management" data-as="দুৰ্যোগ ব্যৱস্থাপনা">Disaster Management</span><a href="tel:1079">1079</a></div>
+<div class="contact"><span data-en="District Control Room" data-as="জিলা নিয়ন্ত্ৰণ কক্ষ">District Control Room</span><a href="tel:1077">1077</a></div>
+<div class="contact"><span data-en="Medical Emergency" data-as="চিকিৎসা জৰুৰীকালীন সেৱা">Medical Emergency</span><a href="tel:108">108</a></div>
+<div class="contact"><span data-en="National Emergency" data-as="ৰাষ্ট্ৰীয় জৰুৰীকালীন সেৱা">National Emergency</span><a href="tel:112">112</a></div>
+<div class="contact"><span data-en="Police" data-as="আৰক্ষী">Police</span><a href="tel:100">100</a></div>
+<div class="contact"><span data-en="Women’s Helpline" data-as="মহিলা সহায়ক সেৱা">Women’s Helpline</span><a href="tel:181">181</a></div>
+<div class="contact"><span data-en="Child Helpline" data-as="শিশু সহায়ক সেৱা">Child Helpline</span><a href="tel:1098">1098</a></div>
 </div>
-<p class="note">Tap a number to call from a phone. Use emergency numbers only when help is needed.</p>
+<p class="note" data-en="Tap a number to call from a phone. Use emergency numbers only when help is needed." data-as="ফোন কৰিবলৈ কোনো এটা নম্বৰত টিপক। সহায়ৰ প্ৰয়োজন হ'লেহে জৰুৰীকালীন নম্বৰসমূহ ব্যৱহাৰ কৰিব।">Tap a number to call from a phone. Use emergency numbers only when help is needed.</p>
 </div>
 
 <div class="panel hospital">
-<h2>Hospital Locator</h2>
+<h2 data-en="Hospital Locator" data-as="চিকিৎসালয় বিচাৰক">Hospital Locator</h2>
 <form action="https://www.google.com/maps/search/" method="get" target="_blank">
 <input type="text" name="api" value="1" hidden>
-<input type="text" name="query" placeholder="Search hospitals or enter a district..." required style="width:100%;padding:13px;border:1px solid #A9DDF5;border-radius:9px;font-family:inherit;margin-bottom:10px">
-<button type="submit" style="background:#264F8E;color:white;padding:11px 20px;border:0;border-radius:8px;font-family:inherit;font-weight:bold;cursor:pointer">
+<input type="text" name="query" placeholder="Search hospitals or enter a district..." data-placeholder-en="Search hospitals or enter a district..." data-placeholder-as="চিকিৎসালয় বিচাৰক বা জিলাৰ নাম লিখক..." required style="width:100%;padding:13px;border:1px solid #A9DDF5;border-radius:9px;font-family:inherit;margin-bottom:10px">
+<button type="submit" style="background:#264F8E;color:white;padding:11px 20px;border:0;border-radius:8px;font-family:inherit;font-weight:bold;cursor:pointer" data-en="Search Hospitals" data-as="চিকিৎসালয় বিচাৰক">
 Search Hospitals
 </button>
 </form>
 <iframe src="https://www.google.com/maps?q=hospitals&output=embed" title="Google Maps hospital search" loading="lazy"></iframe>
-<p class="note">
+<p class="note" data-en="Search for hospitals by area or state using the search box above. Type as shown: State/specific area hospital for (any specific specialisation needed)" data-as="ওপৰৰ সন্ধান বাকচটো ব্যৱহাৰ কৰি অঞ্চল বা ৰাজ্য অনুসৰি চিকিৎসালয় বিচাৰক। উদাহৰণস্বৰূপে লিখক: ৰাজ্য/নিৰ্দিষ্ট অঞ্চলৰ চিকিৎসালয় (প্ৰয়োজনীয় বিশেষ চিকিৎসা সেৱাৰ নাম)।">
 Search for hospitals by area or state using the search box above. Type as shown: State/specific area hospital for (any specific specialisation needed)
 </p>
 </div>
@@ -167,37 +188,93 @@ Search for hospitals by area or state using the search box above. Type as shown:
 
 <section class="lower">
 <div class="advice">
-<h2>Before flood</h2>
-<ul><li>Keep emergency supplies ready.</li><li>Follow weather warnings.</li><li>Know your evacuation route.</li></ul>
-<h2>During flood</h2>
-<ul><li>Move to higher ground if advised.</li><li>Avoid flooded roads.</li><li>Follow official instructions.</li></ul>
-<h2>After flood</h2>
-<ul><li>Return only when safe.</li><li>Use clean drinking water.</li><li>Report damage to authorities.</li></ul>
+<h2 data-en="Before flood" data-as="বানপানীৰ আগতে">Before flood</h2>
+<ul>
+<li data-en="Keep emergency supplies ready." data-as="জৰুৰীকালীন সামগ্ৰী সাজু কৰি ৰাখক।">Keep emergency supplies ready.</li>
+<li data-en="Follow weather warnings." data-as="বতৰৰ সতৰ্কবাণীসমূহ মানি চলক।">Follow weather warnings.</li>
+<li data-en="Know your evacuation route." data-as="স্থানান্তৰৰ পথটো জানি ৰাখক।">Know your evacuation route.</li>
+</ul>
+
+<h2 data-en="During flood" data-as="বানপানীৰ সময়ত">During flood</h2>
+<ul>
+<li data-en="Move to higher ground if advised." data-as="নিৰ্দেশ দিয়া হ'লে ওখ ঠাইলৈ যাওক।">Move to higher ground if advised.</li>
+<li data-en="Avoid flooded roads." data-as="বানপানীৰে বুৰ যোৱা পথ এৰাই চলক।">Avoid flooded roads.</li>
+<li data-en="Follow official instructions." data-as="চৰকাৰী নিৰ্দেশনা মানি চলক।">Follow official instructions.</li>
+</ul>
+
+<h2 data-en="After flood" data-as="বানপানীৰ পিছত">After flood</h2>
+<ul>
+<li data-en="Return only when safe." data-as="সুৰক্ষিত হ'লেহে উভতি আহক।">Return only when safe.</li>
+<li data-en="Use clean drinking water." data-as="বিশুদ্ধ খোৱাপানী ব্যৱহাৰ কৰক।">Use clean drinking water.</li>
+<li data-en="Report damage to authorities." data-as="ক্ষয়-ক্ষতিৰ বিষয়ে কৰ্তৃপক্ষক জনাওক।">Report damage to authorities.</li>
+</ul>
 </div>
+
 <div class="middle">
-<h2>Emergency checklist</h2>
+<h2 data-en="Emergency checklist" data-as="জৰুৰীকালীন প্ৰস্তুতিৰ তালিকা">Emergency checklist</h2>
 <div class="checklist">
-<label><input type="checkbox"> Drinking water</label>
-<label><input type="checkbox"> First-aid kit</label>
-<label><input type="checkbox"> Packaged food</label>
-<label><input type="checkbox"> Torch and batteries</label>
-<label><input type="checkbox"> Important documents</label>
-<label><input type="checkbox"> Mobile phone</label>
-<label><input type="checkbox"> Power bank</label>
-<label><input type="checkbox"> Whistle</label>
+<label><input type="checkbox"> <span data-en="Drinking water" data-as="খোৱাপানী">Drinking water</span></label>
+<label><input type="checkbox"> <span data-en="First-aid kit" data-as="প্ৰাথমিক চিকিৎসাৰ বাকচ">First-aid kit</span></label>
+<label><input type="checkbox"> <span data-en="Packaged food" data-as="পেকেটত ভৰোৱা খাদ্য">Packaged food</span></label>
+<label><input type="checkbox"> <span data-en="Torch and batteries" data-as="টৰ্চ আৰু বেটাৰী">Torch and batteries</span></label>
+<label><input type="checkbox"> <span data-en="Important documents" data-as="জৰুৰী নথি-পত্ৰ">Important documents</span></label>
+<label><input type="checkbox"> <span data-en="Mobile phone" data-as="ম'বাইল ফোন">Mobile phone</span></label>
+<label><input type="checkbox"> <span data-en="Power bank" data-as="পাৱাৰ বেংক">Power bank</span></label>
+<label><input type="checkbox"> <span data-en="Whistle" data-as="বাঁহী">Whistle</span></label>
 </div>
-<h2>Everything you need to know</h2>
+<h2 data-en="Everything you need to know" data-as="আপুনি জানিবলগীয়া সকলো কথা">Everything you need to know</h2>
 <iframe src="https://www.youtube.com/embed/Gs9IqsrYxJk" title="Assam floods" allowfullscreen></iframe>
 </div>
+
 <div class="right">
-<h2>Flood map</h2>
+<h2 data-en="Flood map" data-as="বানপানীৰ মানচিত্ৰ">Flood map</h2>
 <iframe class="map" src="https://assamfloodwatch.com/" title="Assam live flood map" loading="lazy"></iframe>
-<a class="map-full" href="https://assamfloodwatch.com/" target="_blank" rel="noopener">View Full Screen ↗</a>
-<h2>Latest News</h2>
+<a class="map-full" href="https://assamfloodwatch.com/" target="_blank" rel="noopener" data-en="View Full Screen ↗" data-as="সম্পূৰ্ণ পৰ্দাত চাওক ↗">View Full Screen ↗</a>
+<h2 data-en="Latest News" data-as="শেহতীয়া বাতৰি">Latest News</h2>
 <div class="news">
 <iframe src="https://www.ndtv.com/topic/assam-floods" title="Latest Assam flood news"></iframe>
 </div>
 </div>
 </section>
+
+<script>
+let language=localStorage.getItem("tideturn-language")||"en";
+
+function toggleLang(){
+const menu=document.getElementById("langMenu");
+const button=document.querySelector(".lang-btn");
+menu.hidden=!menu.hidden;
+button.setAttribute("aria-expanded",!menu.hidden);
+}
+
+function changeLang(lang){
+language=lang;
+localStorage.setItem("tideturn-language",lang);
+applyLanguage();
+}
+
+function applyLanguage(){
+document.documentElement.lang=language==="as"?"as":"en";
+
+document.querySelectorAll("[data-en][data-as]").forEach(element=>{
+element.innerHTML=element.getAttribute("data-"+language);
+});
+
+document.querySelectorAll("[data-placeholder-en][data-placeholder-as]").forEach(element=>{
+element.placeholder=element.getAttribute("data-placeholder-"+language);
+});
+
+document.title=language==="as"?"TideTurn | সুৰক্ষা":"TideTurn | Safety";
+
+const buttons=document.querySelectorAll(".lang-menu button");
+buttons[0].textContent=language==="en"?"English ✓":"English";
+buttons[1].textContent=language==="as"?"অসমীয়া ✓":"অসমীয়া";
+
+document.getElementById("langMenu").hidden=true;
+document.querySelector(".lang-btn").setAttribute("aria-expanded","false");
+}
+
+applyLanguage();
+</script>
 </body>
 </html>
