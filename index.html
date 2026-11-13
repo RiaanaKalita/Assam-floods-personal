@@ -16,6 +16,15 @@ nav img{width:110px;height:94px;object-fit:contain;flex-shrink:0;transform:scale
 .links{display:flex;justify-content:space-evenly;align-items:center;flex:1}
 .links a{color:white;text-decoration:none;font-size:1.1rem;font-weight:bold;padding:11px 24px;border-radius:9px;white-space:nowrap}
 .links a:hover,.links a:focus,.links a.active{background:#A9DDF5;color:#183D68}
+
+/* LANGUAGE SELECTOR */
+.language{position:relative;margin-left:auto}
+.lang-btn{background:transparent;border:0;color:white;font-size:1.7rem;cursor:pointer;padding:8px}
+.lang-menu{position:absolute;right:0;top:48px;background:white;border-radius:9px;box-shadow:0 3px 12px #183D6840;min-width:145px;z-index:10;overflow:hidden}
+.lang-menu button{display:block;width:100%;padding:12px;border:0;background:white;color:#183D68;font-family:inherit;font-size:15px;cursor:pointer;text-align:left}
+.lang-menu button:hover{background:#A9DDF5}
+[hidden]{display:none!important}
+
 .banner{height:350px;position:relative;background:linear-gradient(90deg,#183D6855,transparent),url('https://static.toiimg.com/thumb/msid-111557664,imgsize-1267916,width-400,resizemode-4/111557664.jpg') center/cover}
 .banner h1{position:absolute;top:45px;left:5%;color:white;font-size:2.5rem;text-shadow:1px 2px 5px #183D68}
 .btn{display:inline-block;background:#E9988E;color:#183D68;text-decoration:none;border:0;border-radius:8px;padding:10px 22px;font-weight:bold;cursor:pointer}
@@ -52,7 +61,8 @@ details p{font-size:14px;line-height:1.5}
 nav{height:auto;min-height:75px;padding:8px 12px;gap:5px;flex-wrap:wrap;justify-content:center}
 nav img{width:65px;height:60px;transform:none}
 .brand{font-size:1.4rem}
-.links{flex-basis:100%;width:100%;justify-content:space-around;gap:4px;padding:5px 0}
+.language{order:3}
+.links{order:4;flex-basis:100%;width:100%;justify-content:space-around;gap:4px;padding:5px 0}
 .links a{font-size:.9rem;padding:9px 13px}
 .banner{height:280px;background-position:center}
 .banner h1{top:35px;left:5%;font-size:clamp(1.6rem,6vw,2.2rem);max-width:90%}
@@ -87,32 +97,104 @@ main{padding:20px 14px 0}
 <img src="Logo.png" alt="TideTurn logo">
 <span class="brand">TideTurn</span>
 <div class="links">
-<a href="index.html" class="active">Home</a>
-<a href="information.html">Information</a>
-<a href="safety.html">Safety</a>
+<a href="index.html" class="active" data-en="Home" data-as="গৃহ">Home</a>
+<a href="information.html" data-en="Information" data-as="তথ্য">Information</a>
+<a href="safety.html" data-en="Safety" data-as="সুৰক্ষা">Safety</a>
+</div>
+
+<div class="language">
+<button class="lang-btn" onclick="toggleLang()" aria-label="Choose language" aria-expanded="false">🌐</button>
+<div class="lang-menu" id="langMenu" hidden>
+<button onclick="changeLang('en')">English ✓</button>
+<button onclick="changeLang('as')">অসমীয়া</button>
+</div>
 </div>
 </nav>
+
 <header class="banner">
-<h1>Safer Communities.<br>Stronger Tomorrows.</h1>
-<a class="btn" href="https://cm.assam.gov.in/donate" target="_blank" rel="noopener noreferrer">DONATE →</a>
-<div class="safe">Be aware. Be prepared. Be safe.</div>
+<h1 data-en="Safer Communities.<br>Stronger Tomorrows." data-as="সুৰক্ষিত সমাজ।<br>উজ্জ্বল ভৱিষ্যৎ।">Safer Communities.<br>Stronger Tomorrows.</h1>
+<a class="btn" href="https://cm.assam.gov.in/donate" target="_blank" rel="noopener noreferrer" data-en="DONATE →" data-as="দান কৰক →">DONATE →</a>
+<div class="safe" data-en="Be aware. Be prepared. Be safe." data-as="সজাগ থাকক। প্ৰস্তুত থাকক। সুৰক্ষিত থাকক।">Be aware. Be prepared. Be safe.</div>
 </header>
+
 <main>
-<h2>What would you like to do?</h2>
+<h2 data-en="What would you like to do?" data-as="আপুনি কি কৰিব বিচাৰে?">What would you like to do?</h2>
 <div class="content">
 <section class="cards">
-<article class="card"><div class="icon">🌍</div><h3>Flood Tracker</h3><p>Explore flood information and locations.</p><a class="btn" href="https://assamfloodwatch.com">GO!</a></article>
-<article class="card"><div class="icon">📖</div><h3>Information</h3><p>Learn about floods and staying prepared.</p><a class="btn" href="information.html">GO!</a></article>
-<article class="card"><div class="icon">📝</div><h3>Quizzes</h3><p>Explore flood awareness learning resources.</p><a class="btn" href="information.html">GO!</a></article>
-<article class="card"><div class="icon">🩹</div><h3>Get Help</h3><p>Find emergency and safety information.</p><a class="btn" href="safety.html">GO!</a></article>
+
+<article class="card">
+<div class="icon">🌍</div>
+<h3 data-en="Flood Tracker" data-as="বানপানীৰ তথ্য">Flood Tracker</h3>
+<p data-en="Explore flood information and locations." data-as="বানপানীৰ তথ্য আৰু স্থানসমূহ জানক।">Explore flood information and locations.</p>
+<a class="btn" href="https://assamfloodwatch.com" data-en="GO!" data-as="যাওক!">GO!</a>
+</article>
+
+<article class="card">
+<div class="icon">📖</div>
+<h3 data-en="Information" data-as="তথ্য">Information</h3>
+<p data-en="Learn about floods and staying prepared." data-as="বানপানী আৰু আগতীয়াকৈ প্ৰস্তুত থকাৰ বিষয়ে জানক।">Learn about floods and staying prepared.</p>
+<a class="btn" href="information.html" data-en="GO!" data-as="যাওক!">GO!</a>
+</article>
+
+<article class="card">
+<div class="icon">📝</div>
+<h3 data-en="Quizzes" data-as="প্ৰশ্নোত্তৰ">Quizzes</h3>
+<p data-en="Explore flood awareness learning resources." data-as="বানপানীৰ সজাগতা সম্পৰ্কীয় শিক্ষণ সামগ্ৰী চাওক।">Explore flood awareness learning resources.</p>
+<a class="btn" href="information.html" data-en="GO!" data-as="যাওক!">GO!</a>
+</article>
+
+<article class="card">
+<div class="icon">🩹</div>
+<h3 data-en="Get Help" data-as="সহায় লাভ কৰক">Get Help</h3>
+<p data-en="Find emergency and safety information." data-as="জৰুৰীকালীন আৰু সুৰক্ষাৰ তথ্য বিচাৰক।">Find emergency and safety information.</p>
+<a class="btn" href="safety.html" data-en="GO!" data-as="যাওক!">GO!</a>
+</article>
+
 </section>
+
 <aside class="about">
-<h2>About Us</h2>
+<h2 data-en="About Us" data-as="আমাৰ বিষয়ে">About Us</h2>
 <img src="Creator.jpeg" alt="TideTurn creator">
-<details><summary aria-label="Read about us"></summary><p>TideTurn helps people learn about floods, prepare for emergencies and find reliable safety information. Our goal is to support safer, more prepared communities in Assam.</p></details>
+<details>
+<summary aria-label="Read about us" data-en="Read more" data-as="অধিক জানক"></summary>
+<p data-en="TideTurn helps people learn about floods, prepare for emergencies and find reliable safety information. Our goal is to support safer, more prepared communities in Assam." data-as="TideTurn-এ মানুহক বানপানীৰ বিষয়ে জানিবলৈ, জৰুৰীকালীন পৰিস্থিতিৰ বাবে প্ৰস্তুত হ'বলৈ আৰু নিৰ্ভৰযোগ্য সুৰক্ষাৰ তথ্য বিচাৰিবলৈ সহায় কৰে। অসমৰ সমাজসমূহক অধিক সুৰক্ষিত আৰু প্ৰস্তুত কৰি তোলাই আমাৰ লক্ষ্য।">TideTurn helps people learn about floods, prepare for emergencies and find reliable safety information. Our goal is to support safer, more prepared communities in Assam.</p>
+</details>
 </aside>
 </div>
 </main>
-<div class="waves" aria-hidden="true"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 45 Q180 100 360 48 T720 50 T1080 48 T1440 45 V120 H0Z" fill="#A9DDF5"/><path d="M0 72 Q220 20 440 75 T880 70 T1320 75 T1440 65 V120 H0Z" fill="#7EBCCB"/><path d="M0 95 Q250 60 500 95 T1000 90 T1440 88 V120 H0Z" fill="#264F8E"/></svg></div>
+
+<div class="waves" aria-hidden="true">
+<svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+<path d="M0 45 Q180 100 360 48 T720 50 T1080 48 T1440 45 V120 H0Z" fill="#A9DDF5"/>
+<path d="M0 72 Q220 20 440 75 T880 70 T1320 75 T1440 65 V120 H0Z" fill="#7EBCCB"/>
+<path d="M0 95 Q250 60 500 95 T1000 90 T1440 88 V120 H0Z" fill="#264F8E"/>
+</svg>
+</div>
+
+<script>
+function toggleLang(){
+const menu=document.getElementById('langMenu');
+const button=document.querySelector('.lang-btn');
+menu.hidden=!menu.hidden;
+button.setAttribute('aria-expanded',!menu.hidden);
+}
+
+function changeLang(lang){
+document.querySelectorAll('[data-en]').forEach(element=>{
+element.innerHTML=element.getAttribute('data-'+lang);
+});
+
+document.documentElement.lang=lang==='as'?'as':'en';
+
+document.querySelector('.lang-btn').setAttribute('aria-expanded','false');
+document.getElementById('langMenu').hidden=true;
+
+document.querySelectorAll('.lang-menu button').forEach((button,index)=>{
+button.textContent=index===0
+?(lang==='en'?'English ✓':'English')
+:(lang==='as'?'অসমীয়া ✓':'অসমীয়া');
+});
+}
+</script>
 </body>
 </html>
